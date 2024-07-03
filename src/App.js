@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import React from 'react';
+import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
+import Charts from './Charts'; // Import or create Charts component
+import './App.css';
+import ApiLogs from './ApiLogs';
+const App = () => {
+    return (
+        <Router>
+            <div className="App">
+                <div className="content">
+                    <Routes>
+                        <Route path="/" element={<ApiLogs />} />
+                        <Route path="/charts" element={<Charts />} />
+                    </Routes>
+                </div>
+                <div className="sidebar">
+                    {/* No sidebar links */}
+                </div>
+            </div>
+        </Router>
+    );
+};
 
 export default App;
