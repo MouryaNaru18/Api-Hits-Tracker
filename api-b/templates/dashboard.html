@@ -1,0 +1,46 @@
+<!-- templates/dashboard.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Hits Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>API Hits Dashboard</h1>
+    <canvas id="apiHitsChart"></canvas>
+    <script>
+        fetch('/api/hits')
+            .then(response => response.json())
+            .then(data => {
+                const ctx = document.getElementById('apiHitsChart').getContext('2d');
+                const labels = data.map(hit => new Date(hit.timestamp).toLocaleString());
+                const hits = data.map((hit, index) => index + 1);
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'API Hits',
+                            data: hits,
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            x: {
+                                type: 'time',
+                                time: {
+                                    unit: 'minute'
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+    </script>
+</body>
+</html>

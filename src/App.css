@@ -1,51 +1,234 @@
-/* src/App.css */
-.App {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  padding: 20px;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 20px 0;
-}
-
-th, td {
-  border: 1px solid #dddddd;
-  padding: 8px;
-  text-align: left;
-}
-
-th {
-  background-color: #f2f2f2;
-}
-
-tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
 /* App.css */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #f5fbff; /* Set the background color to #f5fbff */
+}
 
-.button {
-  display: inline-block;
+.App {
+  display: flex;
+  height: 100%;
+  background-color: #f5fbff; /* Set the background color to #f5fbff */
+}
+
+.header {
+  background-color: #f5fbff; /* Set the background color to #f5fbff */
+  padding: 10px 20px;
+  flex-shrink: 0;
+  width: calc(100% - 250px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+}
+
+.title {
+  margin: 0;
+  padding: 0;
+  font-size: 1.2rem;
+  flex: 1;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+  width: 300px;
+  margin-left: 700px;
+}
+
+.search-button {
   padding: 0.5rem 1rem;
   background-color: #007bff;
   color: white;
   text-decoration: none;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  margin-left: 9px;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: white; /* Set the background color to #f5fbff */
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  border-right: 1px solid #dddddd;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center align items */
+  padding-top: 20px; /* Add padding at the top */
+}
+
+.sidebar-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #007bff;
+  margin-bottom: 20px; /* Add space below the title */
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  width: 100%; /* Make the list take the full width of the sidebar */
+  text-align: center; /* Center align text */
+}
+
+.sidebar li {
+  margin: 10px 0; /* Add space between list items */
+  font-weight: bold; /* Make list items bold */
+}
+
+.content {
+  flex-grow: 1;
+  padding: 20px;
+  margin-left: 250px;
+  background-color: #f5fbff; /* Set the background color to #f5fbff */
+  position: relative;
+  z-index: 0;
+}
+
+.box {
+  margin-left: -10px;
+  margin-right: 10px;
+  margin-top: 20px;
+  width: 97%;
+  height: 50px;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  position: relative;
+  border-radius: 10px;
+}
+
+.left-content {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.center-content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.right-content {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.additional-boxes {
+  display: flex;
+  margin-top: 20px;
+}
+
+.additional-box {
+  flex: 1;
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  margin-left: -10px;
+  margin-right: 28px;
+  margin-bottom: 0; /* Remove bottom margin */
+}
+
+.big-box {
+  background-color: white; /* Set background color to white */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+  flex-grow: 1;
+  margin-top: 20px;
+  margin-left: -10px;
+  margin-right: 28px; /* Ensure the same width as the boxes above */
+  margin-bottom: 0; /* Remove bottom margin */
+  height: 20px;
+}
+
+.time-filters {
+  margin-bottom: 20px; /* Add space below the time filter dropdown */
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: -50px;
+}
+
+.time-filters select {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 10px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.pagination button {
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
   border-radius: 4px;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
+.pagination button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+.sidebar-bottom{
+  margin-top: 250px;
+  height: 100px;
+  background-image: linear-gradient(to bottom right, rgb(255, 0, 200), rgb(119, 0, 255));
+  width:95%;
   align-items: center;
-  margin-bottom: 1rem;
+  text-align: center;
+  border-radius: 5%;
 }
+.sidebar-bbottom{
+  margin-top: 30px;
+  height: 100px;
 
-.title {
-  margin: 0; /* Remove default margin */
-  padding: 0; /* Remove default padding */
-  flex-grow: 1; /* Expand to fill available space */
-  text-align: center; /* Align text to center */
+  width:95%;
+  align-items: center;
+  text-align: center;
 }
-
